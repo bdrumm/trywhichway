@@ -157,6 +157,7 @@
           <img src="assets/hours-light-1x.webp" width="402" height="874" alt="The Hours view: twenty-four cells per leg shaded by the seconds trains lose at that hour." loading="lazy" decoding="async">
         </picture>
       </div>
+      <p class="swipe-hint" aria-hidden="true">Swipe for the board and the hours →</p>
     </article>
 
     <article class="row flip">
@@ -205,7 +206,7 @@
     </div>
   </section>
 
-  <section class="trio" aria-label="How it treats you">
+  <section class="promises" aria-label="How it treats you">
     <div><p class="eyebrow">No account</p><h3>Nothing to sign up for.</h3><p>Open it, pick a station, go. Your commutes and places stay on the phone.</p></div>
     <div><p class="eyebrow">No signal needed</p><h3>It keeps planning underground.</h3><p>Every file it fetches is kept, so it plans from the timetable and the saved tables when the signal goes.</p></div>
     <div><p class="eyebrow">Opt-in sensors</p><h3>It can learn your pace.</h3><p>Switched on, the motion sensors learn how long you take to the platform and which train you really boarded. Nothing leaves the phone unless you share it.</p></div>
@@ -236,8 +237,9 @@
     v.addEventListener('play', () => { if (!v.muted) b.hidden = true; });
   }
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
-    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold: 0.18});
-    for (const el of document.querySelectorAll('.row, .trio > div, .figures li')) { el.classList.add('reveal'); io.observe(el); }
+    // a row taller than the screen never shows 18% of itself at once, so any visible sliver counts
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold: 0.04, rootMargin: '0px 0px -8% 0px'});
+    for (const el of document.querySelectorAll('.row, .promises > div, .figures li')) { el.classList.add('reveal'); io.observe(el); }
   }
 </script>
 </body>
