@@ -245,9 +245,30 @@
   <section id="get" class="get" aria-labelledby="get-title">
     <img src="assets/icon.webp" width="112" height="112" alt="" class="get-icon">
     <h2 id="get-title">WhichWay is in TestFlight.</h2>
-    <p>It runs on iPhone, iOS 17 and later, on the lines the engine has calibrated so far, with more as the record grows. Ask for an invite.</p>
+    <p>It runs on iPhone, iOS 17 and later, on the lines the engine has calibrated so far, with more as the record grows. Leave your email and the invite comes from TestFlight.</p>
+    <form class="invite" id="invite" action="https://formsubmit.co/info@parametric.space" method="POST" novalidate>
+      <input type="hidden" name="_subject" value="WhichWay TestFlight invite request">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_next" value="https://trywhichway.com/?invite=sent#get">
+      <div class="field">
+        <label for="invite-email">Email <span>TestFlight sends the invite here</span></label>
+        <input id="invite-email" name="email" type="email" autocomplete="email" inputmode="email" required placeholder="you@example.com">
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="invite-name">Name <span>optional</span></label>
+          <input id="invite-name" name="name" type="text" autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="invite-lines">Lines you ride <span>optional</span></label>
+          <input id="invite-lines" name="lines" type="text" placeholder="F, A, L…">
+        </div>
+      </div>
+      <div class="honeypot" aria-hidden="true"><label for="invite-hp">Leave this empty</label><input id="invite-hp" name="_honey" type="text" tabindex="-1" autocomplete="off"></div>
+      <button class="button" type="submit">Request an invite</button>
+      <p class="invite-status" id="invite-status" role="status" aria-live="polite">Your email is used only to send the invite.</p>
+    </form>
     <div class="actions center">
-      <a class="button" href="mailto:info@parametric.space?subject=WhichWay%20TestFlight%20invite">Ask for an invite</a>
       <a class="button secondary" href="https://parametric.space/project.html?id=whichway">The full story ↗</a>
     </div>
   </section>
@@ -266,6 +287,33 @@
     v.addEventListener('volumechange', () => { b.hidden = !v.muted; });
     v.addEventListener('play', () => { if (!v.muted) b.hidden = true; });
   }
+  // the invite request: sent from the page through FormSubmit, which forwards it to the inbox; if that fails, the
+  // visitor's own email app opens with the same request filled in
+  (() => {
+    const $ = id => document.getElementById(id);
+    const form = $('invite'), status = $('invite-status'), button = form.querySelector('button'), email = $('invite-email');
+    const TO = 'info@parametric.space', ENDPOINT = 'https://formsubmit.co/ajax/' + TO;
+    const say = (html, kind) => { status.innerHTML = html; status.dataset.kind = kind || ''; };
+    if (new URLSearchParams(location.search).get('invite') === 'sent') say('Thanks, your request is in. The invite will come from TestFlight.', 'ok');
+    const draft = d => 'mailto:' + TO + '?subject=' + encodeURIComponent('WhichWay TestFlight invite request') +
+      '&body=' + encodeURIComponent('Please send a WhichWay TestFlight invite to: ' + d.email + (d.name ? '\nName: ' + d.name : '') + (d.lines ? '\nLines I ride: ' + d.lines : ''));
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const d = {email: email.value.trim(), name: $('invite-name').value.trim(), lines: $('invite-lines').value.trim()};
+      if ($('invite-hp').value) return;
+      if (!email.checkValidity() || !d.email) { say('Please enter an email address the invite can go to.', 'error'); email.focus(); return; }
+      button.disabled = true; say('Sending…');
+      try {
+        const r = await fetch(ENDPOINT, {method: 'POST', headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+          body: JSON.stringify({...d, _subject: 'WhichWay TestFlight invite request', _template: 'table', _replyto: d.email})});
+        const j = await r.json().catch(() => ({}));
+        if (!r.ok || String(j.success) !== 'true') throw new Error(j.message || 'not sent');
+        form.reset(); say('Thanks, your request is in. The invite will come from TestFlight to ' + d.email.replace(/[<>&"]/g, '') + '.', 'ok');
+      } catch {
+        say('It didn’t send from here. <a href="' + draft(d) + '">Send it from your email app instead</a>, or write to <a href="mailto:' + TO + '">' + TO + '</a>.', 'error');
+      } finally { button.disabled = false; }
+    });
+  })();
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
     // a row taller than the screen never shows much of itself at once, so any visible sliver counts
     const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold: 0.04, rootMargin: '0px 0px -8% 0px'});
