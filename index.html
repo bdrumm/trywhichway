@@ -310,7 +310,7 @@
           body: JSON.stringify({...d, _subject: 'WhichWay TestFlight invite request', _template: 'table', _replyto: d.email})});
         const j = await r.json().catch(() => ({}));
         if (!r.ok || String(j.success) !== 'true') throw new Error(j.message || 'not sent');
-        form.reset(); say('Thanks, your request is in. The invite will come from TestFlight to ' + d.email.replace(/[<>&"]/g, '') + '.', 'ok');
+        form.reset(); say('Thanks, your request is in. Watch your inbox for the TestFlight invite.', 'ok');
       } catch {
         say('It didn’t send from here. <a href="' + draft(d) + '">Send it from your email app instead</a>, or write to <a href="mailto:' + TO + '">' + TO + '</a>.', 'error');
       } finally { button.disabled = false; }
