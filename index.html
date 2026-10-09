@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>WhichWay — Which train, right now.</title>
-<meta name="description" content="WhichWay is a New York City subway assistant for iPhone. It reads the MTA’s own feeds every thirty seconds and runs a prediction engine on every train, so the countdown you see is the one that comes true.">
+<title>WhichWay — Walk to the station. The rest is automatic.</title>
+<meta name="description" content="WhichWay is a New York City subway app for iPhone that picks your route as you near the station, knows when you’re on the train and which one, and keeps the fastest way there updated from that train, all on a prediction model more accurate than the MTA’s own countdown.">
 <link rel="canonical" href="https://trywhichway.com/">
 <meta name="theme-color" content="#201329">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="WhichWay">
-<meta property="og:title" content="WhichWay — Which train, right now.">
-<meta property="og:description" content="A subway assistant that names the train, counts down to boarding and gives every arrival its own 80% window.">
+<meta property="og:title" content="WhichWay — Walk to the station. The rest is automatic.">
+<meta property="og:description" content="No route to pick. WhichWay starts your route near the station, knows which train you boarded, and re-plans the fastest way from it.">
 <meta property="og:url" content="https://trywhichway.com/">
 <meta property="og:image" content="https://trywhichway.com/assets/og.jpg">
 <meta property="og:image:width" content="1200">
@@ -20,17 +20,17 @@
 <link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preload" href="fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/go-top-light.webp" as="image" media="(min-width: 760px)">
+<link rel="preload" href="assets/on-the-train-1x.webp" as="image">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<a class="skip" href="#app">Skip to the app</a>
+<a class="skip" href="#how">Skip to how it works</a>
 
 <header class="top">
   <a class="brand" href="#top" aria-label="WhichWay, home"><img src="assets/icon.webp" width="36" height="36" alt=""><span>WhichWay</span></a>
   <nav aria-label="Sections">
-    <a href="#app">The app</a>
-    <a href="#engine">The engine</a>
+    <a href="#how">How it works</a>
+    <a href="#model">The model</a>
     <a href="#film">The film</a>
     <a class="cta" href="#get">Get it</a>
   </nav>
@@ -41,157 +41,174 @@
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero-copy">
       <p class="eyebrow">WhichWay · New York City subway · iPhone</p>
-      <h1 id="hero-title">Which train, <em>right now.</em></h1>
-      <p class="lede">A subway assistant that reads the MTA’s own feeds every thirty seconds and runs a prediction engine on every train. It names the train to take, counts down to boarding at your platform, and gives the arrival its own 80% window.</p>
+      <h1 id="hero-title">Walk to the station. <em>The rest is automatic.</em></h1>
+      <p class="lede">No route to pick, no button to press. WhichWay picks your route as you near the station, knows when you’re on the train and which one, and keeps the fastest way there updated from that train. Every step runs on a prediction model more accurate than the MTA’s own countdown.</p>
       <div class="actions">
         <a class="button" href="#get">Get the app</a>
-        <a class="button secondary" href="#film">Watch the film</a>
+        <a class="button secondary" href="#how">See how it works</a>
       </div>
       <ul class="facts" aria-label="At a glance">
-        <li><strong>30 s</strong><span>feed cadence, aligned to the MTA</span></li>
+        <li><strong>150 m</strong><span>from the station, your route starts itself</span></li>
+        <li><strong>67.6 s</strong><span>typical arrival error, vs 85.5 s for the timetable</span></li>
         <li><strong>80%</strong><span>window on every arrival</span></li>
-        <li><strong>248K</strong><span>countdown ETAs benchmarked</span></li>
-        <li><strong>21</strong><span>lines calibrated</span></li>
+        <li><strong>30 s</strong><span>feed refresh, aligned to the MTA</span></li>
       </ul>
     </div>
     <div class="hero-art" aria-hidden="true">
       <picture class="phone phone-back">
-        <source srcset="assets/go-hold-dragson-dark-1x.webp 1x, assets/go-hold-dragson-dark.webp 2x" type="image/webp">
-        <img src="assets/go-hold-dragson-dark-1x.webp" width="402" height="874" alt="" loading="eager" decoding="async">
+        <source srcset="assets/auto-start-1x.webp 1x, assets/auto-start.webp 2x" type="image/webp">
+        <img src="assets/auto-start-1x.webp" width="402" height="874" alt="" loading="eager" decoding="async">
       </picture>
       <picture class="phone phone-front">
-        <source srcset="assets/go-top-light-1x.webp 1x, assets/go-top-light.webp 2x" type="image/webp">
-        <img src="assets/go-top-light-1x.webp" width="402" height="874" alt="" loading="eager" decoding="async" fetchpriority="high">
+        <source srcset="assets/on-the-train-1x.webp 1x, assets/on-the-train.webp 2x" type="image/webp">
+        <img src="assets/on-the-train-1x.webp" width="402" height="874" alt="" loading="eager" decoding="async" fetchpriority="high">
+      </picture>
+      <picture class="live-card">
+        <source srcset="assets/live-activity-1x.webp 1x, assets/live-activity.webp 2x" type="image/webp">
+        <img src="assets/live-activity-1x.webp" width="557" height="193" alt="" loading="eager" decoding="async">
       </picture>
     </div>
   </section>
 
-  <section id="app" class="rows" aria-labelledby="app-title">
+  <section id="how" class="how" aria-labelledby="how-title">
     <div class="section-head">
-      <p class="eyebrow">The app</p>
-      <h2 id="app-title">Everything a platform wants to know.</h2>
-      <p>The screens are the app’s own, captured from the iOS Simulator against the live feeds.</p>
+      <p class="eyebrow">How it works</p>
+      <h2 id="how-title">From your door to your stop, hands&#8209;free.</h2>
+      <p>Four moments in every trip. You don’t tap through any of them.</p>
     </div>
-
-    <article class="row">
-      <div class="row-copy">
-        <p class="eyebrow">01 / The Now card</p>
-        <h3>Names the train. Counts down to boarding.</h3>
-        <p>The train to take, the countdown to your platform, and the arrival with its 80% window and the feed’s own time beside it. Your commute is already set when you open it.</p>
-      </div>
-      <div class="row-art">
-        <picture class="phone">
-          <source srcset="assets/go-top-light-1x.webp 1x, assets/go-top-light.webp 2x" type="image/webp">
-          <img src="assets/go-top-light-1x.webp" width="402" height="874" alt="The Go tab: the Now card names the F, counts down two minutes to boarding and gives the arrival at 14 St with its window." loading="lazy" decoding="async">
-        </picture>
-      </div>
-    </article>
-
-    <article class="row flip">
-      <div class="row-copy">
-        <p class="eyebrow">02 / A train is held</p>
-        <h3>Plan for the hold, not the hope.</h3>
-        <p>When a train on your lines is held, see your arrival if the hold ends as holds here usually do, drags on to its 90th percentile, or clears now. One tap, and every time on screen moves with it.</p>
-      </div>
-      <div class="row-art pair">
-        <picture class="phone">
-          <source srcset="assets/go-hold-dark-1x.webp 1x, assets/go-hold-dark.webp 2x" type="image/webp">
-          <img src="assets/go-hold-dark-1x.webp" width="402" height="874" alt="A held train: the card offers three arrivals, for the hold ending as usual, dragging on or clearing now." loading="lazy" decoding="async">
-        </picture>
-        <picture class="phone">
-          <source srcset="assets/go-hold-dragson-dark-1x.webp 1x, assets/go-hold-dragson-dark.webp 2x" type="image/webp">
-          <img src="assets/go-hold-dragson-dark-1x.webp" width="402" height="874" alt="The same route with the hold assumed to drag on: every time has moved later." loading="lazy" decoding="async">
-        </picture>
-      </div>
-    </article>
-
-    <article class="row">
-      <div class="row-copy">
-        <p class="eyebrow">03 / Every route</p>
-        <h3>Every way there, ranked.</h3>
-        <p>Direct or with one change, ranked by the next live arrival, each with the reason it runs late today and how tight the connection is.</p>
-      </div>
-      <div class="row-art">
-        <picture class="phone">
-          <source srcset="assets/routes-light-1x.webp 1x, assets/routes-light.webp 2x" type="image/webp">
-          <img src="assets/routes-light-1x.webp" width="402" height="874" alt="The route list: every way from 4 Av-9 St to 14 St, ranked by arrival, with a health dot and the minutes behind the timetable." loading="lazy" decoding="async">
-        </picture>
-      </div>
-    </article>
-
-    <article class="row flip">
-      <div class="row-copy">
-        <p class="eyebrow">04 / The line</p>
-        <h3>Every train on the track, live.</h3>
-        <p>Your line as a diagram, every train gliding between polls, held and overdue trains coloured, and the engine’s projection for the next hour: the largest gap forming and where.</p>
-      </div>
-      <div class="row-art pair">
-        <picture class="phone">
-          <source srcset="assets/line-dark-1x.webp 1x, assets/line-dark.webp 2x" type="image/webp">
-          <img src="assets/line-dark-1x.webp" width="402" height="874" alt="The Line tab: the F northbound as a track with every started train on it." loading="lazy" decoding="async">
-        </picture>
-        <picture class="phone">
-          <source srcset="assets/line-list-dark-1x.webp 1x, assets/line-list-dark.webp 2x" type="image/webp">
-          <img src="assets/line-list-dark-1x.webp" width="402" height="874" alt="The same line as a list: each train’s lateness, holds and the engine’s arrival beside the feed’s." loading="lazy" decoding="async">
-        </picture>
-      </div>
-    </article>
-
-    <article class="row">
-      <div class="row-copy">
-        <p class="eyebrow">05 / The map and the board</p>
-        <h3>Your stretch, and the trains on it.</h3>
-        <p>The line on the map with the stops you ride, each train where it should be right now; a departure board for your platform with every countdown, flag and change margin; and the hours of the day on this path.</p>
-      </div>
-      <div class="row-art trio">
-        <picture class="phone">
-          <source srcset="assets/map-dark-1x.webp 1x, assets/map-dark.webp 2x" type="image/webp">
-          <img src="assets/map-dark-1x.webp" width="402" height="874" alt="The Map view: the route’s track in Brooklyn and Manhattan with the trains at their positions." loading="lazy" decoding="async">
-        </picture>
-        <picture class="phone">
-          <source srcset="assets/board-light-1x.webp 1x, assets/board-light.webp 2x" type="image/webp">
-          <img src="assets/board-light-1x.webp" width="402" height="874" alt="The Board view: a departure board for the platform with countdowns to boarding." loading="lazy" decoding="async">
-        </picture>
-        <picture class="phone">
-          <source srcset="assets/hours-light-1x.webp 1x, assets/hours-light.webp 2x" type="image/webp">
-          <img src="assets/hours-light-1x.webp" width="402" height="874" alt="The Hours view: twenty-four cells per leg shaded by the seconds trains lose at that hour." loading="lazy" decoding="async">
-        </picture>
-      </div>
-      <p class="swipe-hint" aria-hidden="true">Swipe for the board and the hours →</p>
-    </article>
-
-    <article class="row flip">
-      <div class="row-copy">
-        <p class="eyebrow">06 / Insights</p>
-        <h3>Every number, explained.</h3>
-        <p>Where each time comes from: the timetable, the history, the train in the feed, and what the engine made of it. Nothing on screen is a black box.</p>
-      </div>
-      <div class="row-art">
-        <picture class="phone">
-          <source srcset="assets/insights-light-1x.webp 1x, assets/insights-light.webp 2x" type="image/webp">
-          <img src="assets/insights-light-1x.webp" width="402" height="874" alt="Route insights: the sources behind the selected route’s times, one card each." loading="lazy" decoding="async">
-        </picture>
-      </div>
-    </article>
+    <ol class="steps">
+      <li class="step" style="--rail: var(--ink); --rail-style: dashed">
+        <span class="step-n">01</span>
+        <p class="eyebrow">Near the station</p>
+        <h3>Your route is picked.</h3>
+        <p>Your commute, or the trip you usually make at this hour. It starts by itself as you walk up.</p>
+      </li>
+      <li class="step" style="--rail: var(--faint); --rail-style: solid">
+        <span class="step-n">02</span>
+        <p class="eyebrow">On the platform</p>
+        <h3>The train to take.</h3>
+        <p>The countdown to your platform and the arrival with its window, from the model, not the countdown clock.</p>
+      </li>
+      <li class="step" style="--rail: var(--orange); --rail-style: solid">
+        <span class="step-n">03</span>
+        <p class="eyebrow">The doors close</p>
+        <h3>It knows you’re on.</h3>
+        <p>The phone feels the train pull away and matches the moment to every train that just left. “On the F.”</p>
+      </li>
+      <li class="step" style="--rail: var(--blue); --rail-style: solid">
+        <span class="step-n">04</span>
+        <p class="eyebrow">On the way</p>
+        <h3>The fastest way, from here.</h3>
+        <p>The route follows the train you’re on: when to get off, the change it makes, and the arrival it will make.</p>
+      </li>
+    </ol>
+    <p class="underneath"><span>Underneath every step</span> the prediction model: where every train will actually be, and when. <a href="#model">How it works ↓</a></p>
   </section>
 
-  <section id="engine" class="engine" aria-labelledby="engine-title">
+  <section class="rows" aria-label="The three things it does for you">
+
+    <article class="row" id="auto">
+      <div class="row-copy">
+        <p class="eyebrow">01 / Near the station</p>
+        <h3>The route picks itself.</h3>
+        <p>Save a commute with its hours, or let WhichWay learn the trip you usually make at this time of day, from where you are. Walk toward the station and the route starts on its own: the train to take, the countdown to your platform and the arrival with its 80% window are on screen before you reach for the phone.</p>
+        <ul class="ticks">
+          <li>Commutes apply in their own time window, from a fixed station or the nearest one.</li>
+          <li>No commute on? The trip you usually make at this hour fills in.</li>
+          <li>Walking toward the station, or within 150 m of it, the route begins. No Start button.</li>
+        </ul>
+      </div>
+      <figure class="row-art">
+        <picture class="phone">
+          <source srcset="assets/auto-start-1x.webp 1x, assets/auto-start.webp 2x" type="image/webp">
+          <img src="assets/auto-start-1x.webp" width="402" height="874" alt="The Go tab at 4 Av-9 St, the route already started: take the R at 10:19, change at Jay St-MetroTech to the A/C, arrive 14 St 10:45 with an 80% window of 10:43 to 10:50." loading="lazy" decoding="async">
+        </picture>
+        <figcaption>Captured live: reaching 4 Av-9 St started the trip to 14 St by itself.</figcaption>
+      </figure>
+    </article>
+
+    <article class="row flip" id="onboard">
+      <div class="row-copy">
+        <p class="eyebrow">02 / The doors close</p>
+        <h3>It knows you’re on the train.</h3>
+        <p>With motion sensing on, the phone feels the train pull away and weighs that moment against every train that just left your platform, with the feed’s own positions. The stops it feels along the way, and where you step off, settle it. It says “On the F”, or “On the G, not the F” when you took the other line.</p>
+        <figure class="trace" aria-label="Diagram: the phone’s motion while walking, standing on the platform, and as the train pulls away, with the pull-away lined up against the departures from the platform.">
+          <svg viewBox="0 0 560 190" role="img" aria-hidden="true">
+            <line x1="20" y1="104" x2="540" y2="104" class="axis"/>
+            <path class="wave walk" d="M20 104 l8 -16 l8 30 l8 -26 l8 22 l8 -30 l8 32 l8 -22 l8 18 l8 -28 l8 30 l8 -20 l8 14 l8 -24 l8 26 l8 -14 l8 6"/>
+            <path class="wave still" d="M156 104 l40 -1 l40 2 l40 -1 l40 1 l20 0"/>
+            <path class="wave ride" d="M336 104 c10 0 14 -62 30 -62 c16 0 18 40 34 40 l12 -6 l12 8 l12 -10 l12 9 l12 -7 l12 8 l12 -9 l12 6 l12 -8 l12 7 l12 -5"/>
+            <text x="20" y="30" class="lab">walking</text>
+            <text x="156" y="30" class="lab">standing on the platform</text>
+            <text x="352" y="30" class="lab accent">the train pulls away</text>
+            <line x1="352" y1="40" x2="352" y2="170" class="mark"/>
+            <g class="deps">
+              <text x="20" y="150" class="lab">departures from the platform</text>
+              <circle cx="270" cy="168" r="9" class="g"/><text x="270" y="172" class="bullet">G</text>
+              <circle cx="352" cy="168" r="11" class="f"/><text x="352" y="172.5" class="bullet">F</text>
+              <circle cx="380" cy="168" r="9" class="r"/><text x="380" y="172" class="bullet dark">R</text>
+              <circle cx="470" cy="168" r="9" class="f faint"/><text x="470" y="172" class="bullet">F</text>
+            </g>
+          </svg>
+          <figcaption>How the match works: the felt pull-away lines up with one train’s departure. A diagram, not a recording.</figcaption>
+        </figure>
+        <ul class="ticks">
+          <li>Unsure, or the phone was deep in a bag? It assumes the train you planned, and says “presumably”.</li>
+          <li>One tap on the trains that just left puts it right, and your word stands for the ride.</li>
+        </ul>
+      </div>
+      <figure class="row-art">
+        <picture class="phone">
+          <source srcset="assets/which-train-1x.webp 1x, assets/which-train.webp 2x" type="image/webp">
+          <img src="assets/which-train-1x.webp" width="402" height="874" alt="The “Your train” sheet: the trains that left 4 Av-9 St in the last minutes, an F and an R at 10:07, a G at 10:03 and an F at 9:55, each with where it is now and the route it leads to." loading="lazy" decoding="async">
+        </picture>
+        <figcaption>The trains that just left 4 Av-9 St, live from the feed, each with the route it leads to.</figcaption>
+      </figure>
+    </article>
+
+    <article class="row" id="ride">
+      <div class="row-copy">
+        <p class="eyebrow">03 / On the way</p>
+        <h3>The fastest way, from the train you’re on.</h3>
+        <p>Once you’re aboard, the route follows that train, not the plan: the countdown to getting off, the change it makes with its margin and walk, and the arrival as that train will make it, with its window.</p>
+        <ul class="ticks">
+          <li>Took the F when the plan said the R? The route becomes the F’s: change at W 4 St, not Jay St.</li>
+          <li>Stayed on past the change? It re-plans to a later change, or straight there, whichever gets you in first.</li>
+          <li>The same ride sits on your lock screen as a Live Activity.</li>
+        </ul>
+      </div>
+      <figure class="row-art stack">
+        <picture class="phone">
+          <source srcset="assets/on-the-train-1x.webp 1x, assets/on-the-train.webp 2x" type="image/webp">
+          <img src="assets/on-the-train-1x.webp" width="402" height="874" alt="On the F, off at 10:28, with a countdown to getting off: change at W 4 St-Wash Sq to an A at 10:34 with a 3:15 margin and a 3:00 walk, arrive 14 St 10:36, 10 stops to go." loading="lazy" decoding="async">
+        </picture>
+        <picture class="live-card">
+          <source srcset="assets/live-activity-1x.webp 1x, assets/live-activity.webp 2x" type="image/webp">
+          <img src="assets/live-activity-1x.webp" width="557" height="193" alt="The lock-screen Live Activity: on the F, off 10:28, change at W 4 St to the A/C/E at 10:34, arrive 14 St 10:36." loading="lazy" decoding="async">
+        </picture>
+        <figcaption>Captured live: boarding the 10:07 F turned the planned R via Jay St into the F via W 4 St.</figcaption>
+      </figure>
+    </article>
+
+  </section>
+
+  <section id="model" class="engine" aria-labelledby="model-title">
     <div class="section-head light">
-      <p class="eyebrow">The engine</p>
-      <h2 id="engine-title">Where a time comes from.</h2>
-      <p>The countdown clock runs about half a minute optimistic. WhichWay measures that error, learns how long a held train stays and how lateness carries down the line, blends it all into one arrival with a window, and scores every forecast against what happened.</p>
+      <p class="eyebrow">The model</p>
+      <h2 id="model-title">The prediction model underneath.</h2>
+      <p>Picking your route, naming your train and re-planning on the way all lean on one thing: knowing when every train will really be where. The MTA’s countdown runs about half a minute optimistic, and its feed logs an arrival 30 to 95 seconds after the train pulls in. WhichWay corrects both, with a model trained on three weeks of every train in the system.</p>
     </div>
+    <ul class="figures" aria-label="The model in numbers">
+      <li><strong>67.6 s</strong><span>held-out arrival error, against 85.5 s for the timetable</span></li>
+      <li><strong>43%</strong><span>closer than the MTA countdown, where the countdown was sampled</span></li>
+      <li><strong>80%</strong><span>of held-out arrivals land inside the 80% window shown</span></li>
+      <li><strong>30–95 s</strong><span>how late the feed logs an arrival; WhichWay times the pull-in</span></li>
+    </ul>
     <div class="film-frame">
       <video id="engine-video" poster="assets/engine-poster.webp" preload="none" playsinline controls muted width="1280" height="720" aria-label="The engine, sixty seconds, with music: motion graphics on the data behind the predictions."><source src="assets/engine.mp4" type="video/mp4"></video>
       <button type="button" class="sound" data-for="engine-video">Sound on</button>
     </div>
-    <ul class="figures" aria-label="The engine in numbers">
-      <li><strong>248K</strong><span>countdown ETAs matched to their arrivals</span></li>
-      <li><strong>21.1K</strong><span>holds logged, every line</span></li>
-      <li><strong>9.4M</strong><span>rows for the learned model</span></li>
-      <li><strong>20K</strong><span>live forecasts scored afterwards</span></li>
-    </ul>
-    <p class="engine-note">Every number is from the engine’s published tables and its model report of 5 October 2026. The whole engine runs on the phone, and keeps planning underground.</p>
+    <p class="engine-note">A gradient-boosted model, one to twenty stops ahead, with three quantiles for every arrival. It learns how long a held train stays and how lateness carries down the line, and every live forecast is scored against what happened. Figures from the engine’s model report and its platform timing study of October 2026. The whole engine runs on the phone.</p>
   </section>
 
   <section id="film" class="film" aria-labelledby="film-title">
@@ -206,10 +223,23 @@
     </div>
   </section>
 
+  <section class="also" aria-labelledby="also-title">
+    <div class="also-head">
+      <p class="eyebrow">Also in the app</p>
+      <h2 id="also-title">The rest of the subway, at a glance.</h2>
+    </div>
+    <div class="also-strip">
+      <figure><picture class="phone"><source srcset="assets/routes-light-1x.webp 1x, assets/routes-light.webp 2x" type="image/webp"><img src="assets/routes-light-1x.webp" width="402" height="874" alt="Every way there, ranked by the next live arrival." loading="lazy" decoding="async"></picture><figcaption>Every way there, ranked</figcaption></figure>
+      <figure><picture class="phone"><source srcset="assets/line-dark-1x.webp 1x, assets/line-dark.webp 2x" type="image/webp"><img src="assets/line-dark-1x.webp" width="402" height="874" alt="Your line as a track with every train on it, live." loading="lazy" decoding="async"></picture><figcaption>Your line, live</figcaption></figure>
+      <figure><picture class="phone"><source srcset="assets/map-dark-1x.webp 1x, assets/map-dark.webp 2x" type="image/webp"><img src="assets/map-dark-1x.webp" width="402" height="874" alt="The route on the map with the trains at their positions." loading="lazy" decoding="async"></picture><figcaption>The map</figcaption></figure>
+      <figure><picture class="phone"><source srcset="assets/board-light-1x.webp 1x, assets/board-light.webp 2x" type="image/webp"><img src="assets/board-light-1x.webp" width="402" height="874" alt="A departure board for your platform." loading="lazy" decoding="async"></picture><figcaption>Your platform’s board</figcaption></figure>
+    </div>
+  </section>
+
   <section class="promises" aria-label="How it treats you">
-    <div><p class="eyebrow">No account</p><h3>Nothing to sign up for.</h3><p>Open it, pick a station, go. Your commutes and places stay on the phone.</p></div>
+    <div><p class="eyebrow">No account</p><h3>Nothing to sign up for.</h3><p>Your commutes, places and habits stay on the phone.</p></div>
     <div><p class="eyebrow">No signal needed</p><h3>It keeps planning underground.</h3><p>Every file it fetches is kept, so it plans from the timetable and the saved tables when the signal goes.</p></div>
-    <div><p class="eyebrow">Opt-in sensors</p><h3>It can learn your pace.</h3><p>Switched on, the motion sensors learn how long you take to the platform and which train you really boarded. Nothing leaves the phone unless you share it.</p></div>
+    <div><p class="eyebrow">Your sensors, your call</p><h3>Motion sensing is opt-in.</h3><p>It is reduced on the phone to a few numbers a second; raw sensor data is never stored or sent. Nothing leaves the phone unless you share it.</p></div>
   </section>
 
   <section id="get" class="get" aria-labelledby="get-title">
@@ -237,9 +267,9 @@
     v.addEventListener('play', () => { if (!v.muted) b.hidden = true; });
   }
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
-    // a row taller than the screen never shows 18% of itself at once, so any visible sliver counts
+    // a row taller than the screen never shows much of itself at once, so any visible sliver counts
     const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold: 0.04, rootMargin: '0px 0px -8% 0px'});
-    for (const el of document.querySelectorAll('.row, .promises > div, .figures li')) { el.classList.add('reveal'); io.observe(el); }
+    for (const el of document.querySelectorAll('.row, .step, .promises > div, .figures li, .also-strip figure')) { el.classList.add('reveal'); io.observe(el); }
   }
 </script>
 </body>
