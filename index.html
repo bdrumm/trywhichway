@@ -246,7 +246,7 @@
     <img src="assets/icon.webp" width="112" height="112" alt="" class="get-icon">
     <h2 id="get-title">WhichWay is in TestFlight.</h2>
     <p>It runs on iPhone, iOS 17 and later, on the lines the engine has calibrated so far, with more as the record grows. Leave your email and the invite comes from TestFlight.</p>
-    <form class="invite" id="invite" action="https://formsubmit.co/barond@gmail.com" method="POST" novalidate>
+    <form class="invite" id="invite" action="https://formsubmit.co/05b559aa64447fef6f6fa6c84996cfee" method="POST" novalidate>
       <input type="hidden" name="_subject" value="WhichWay TestFlight invite request">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_next" value="https://trywhichway.com/?invite=sent#get">
@@ -292,7 +292,9 @@
   (() => {
     const $ = id => document.getElementById(id);
     const form = $('invite'), status = $('invite-status'), button = form.querySelector('button'), email = $('invite-email');
-    const TO = 'barond@gmail.com', ENDPOINT = 'https://formsubmit.co/ajax/' + TO;
+    // FormSubmit's alias for this form stands in for the inbox; the address itself is only put together for the
+    // email-app fallback, so it never appears whole in the page source
+    const ENDPOINT = 'https://formsubmit.co/ajax/05b559aa64447fef6f6fa6c84996cfee', TO = ['barond', 'gmail.com'].join('@');
     const say = (html, kind) => { status.innerHTML = html; status.dataset.kind = kind || ''; };
     if (new URLSearchParams(location.search).get('invite') === 'sent') say('Thanks, your request is in. The invite will come from TestFlight.', 'ok');
     const draft = d => 'mailto:' + TO + '?subject=' + encodeURIComponent('WhichWay TestFlight invite request') +
