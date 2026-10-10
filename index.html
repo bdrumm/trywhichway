@@ -20,7 +20,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preload" href="fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/on-the-train-1x.webp" as="image">
+<link rel="preload" href="assets/home-ride-1x.webp" as="image">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -56,12 +56,12 @@
     </div>
     <div class="hero-art" aria-hidden="true">
       <picture class="phone phone-back">
-        <source srcset="assets/auto-start-1x.webp 1x, assets/auto-start.webp 2x" type="image/webp">
-        <img src="assets/auto-start-1x.webp" width="402" height="874" alt="" loading="eager" decoding="async">
+        <source srcset="assets/line-view-1x.webp 1x, assets/line-view.webp 2x" type="image/webp">
+        <img src="assets/line-view-1x.webp" width="402" height="874" alt="" loading="eager" decoding="async">
       </picture>
       <picture class="phone phone-front">
-        <source srcset="assets/on-the-train-1x.webp 1x, assets/on-the-train.webp 2x" type="image/webp">
-        <img src="assets/on-the-train-1x.webp" width="402" height="874" alt="" loading="eager" decoding="async" fetchpriority="high">
+        <source srcset="assets/home-ride-1x.webp 1x, assets/home-ride.webp 2x" type="image/webp">
+        <img src="assets/home-ride-1x.webp" width="402" height="874" alt="" loading="eager" decoding="async" fetchpriority="high">
       </picture>
       <picture class="live-card">
         <source srcset="assets/live-activity-1x.webp 1x, assets/live-activity.webp 2x" type="image/webp">
@@ -87,7 +87,7 @@
         <span class="step-n">02</span>
         <p class="eyebrow">On the platform</p>
         <h3>The train to take.</h3>
-        <p>The countdown to your platform and the arrival with its window, from the model, not the countdown clock.</p>
+        <p>A countdown you can read across the platform, the arrival with its likely window, and how sure the model is.</p>
       </li>
       <li class="step" style="--rail: var(--orange); --rail-style: solid">
         <span class="step-n">03</span>
@@ -105,13 +105,13 @@
     <p class="underneath"><span>Underneath every step</span> the prediction model: where every train will actually be, and when. <a href="#model">How it works ↓</a></p>
   </section>
 
-  <section class="rows" aria-label="The three things it does for you">
+  <section class="rows" aria-label="What it does for you">
 
     <article class="row" id="auto">
       <div class="row-copy">
         <p class="eyebrow">01 / Near the station</p>
         <h3>The route picks itself.</h3>
-        <p>Save a commute with its hours, or let WhichWay learn the trip you usually make at this time of day, from where you are. Walk toward the station and the route starts on its own: the train to take, the countdown to your platform and the arrival with its 80% window are on screen before you reach for the phone.</p>
+        <p>Save a commute with its hours, or let WhichWay learn the trip you usually make at this time of day, from where you are. Walk toward the station and the route starts on its own. The home screen is one glance: the countdown to boarding in big type, the lines and the change, the arrival with its likely window, and the next best ways under it.</p>
         <ul class="ticks">
           <li>Commutes apply in their own time window, from a fixed station or the nearest one.</li>
           <li>No commute on? The trip you usually make at this hour fills in.</li>
@@ -120,16 +120,37 @@
       </div>
       <figure class="row-art">
         <picture class="phone">
-          <source srcset="assets/auto-start-1x.webp 1x, assets/auto-start.webp 2x" type="image/webp">
-          <img src="assets/auto-start-1x.webp" width="402" height="874" alt="The Go tab at 4 Av-9 St, the route already started: take the R at 10:19, change at Jay St-MetroTech to the A/C, arrive 14 St 10:45 with an 80% window of 10:43 to 10:50." loading="lazy" decoding="async">
+          <source srcset="assets/home-station-1x.webp 1x, assets/home-station.webp 2x" type="image/webp">
+          <img src="assets/home-station-1x.webp" width="402" height="874" alt="The home screen at 4 Av-9 St: 8:01 to board the F, change at Jay St-MetroTech to the A, arrive 14 St 12:19, likely 12:15 to 12:22, low confidence because of a tight change, and three other ways." loading="lazy" decoding="async">
         </picture>
-        <figcaption>Captured live: reaching 4 Av-9 St started the trip to 14 St by itself.</figcaption>
+        <figcaption>Captured live at 4 Av-9 St: the trip to 14 St on screen as you arrive.</figcaption>
       </figure>
     </article>
 
-    <article class="row flip" id="onboard">
+    <article class="row flip glance" id="glance">
       <div class="row-copy">
-        <p class="eyebrow">02 / The doors close</p>
+        <p class="eyebrow">02 / At a glance</p>
+        <h3>How much time you have, and how sure it is.</h3>
+        <p>The page itself tells you to hurry. Its glow is the time to your train: blue while there is time to reach it, yellow as it nears, red when it is about to leave, with the walk you still have to make counted in. On the train it counts down to your stop instead.</p>
+        <p>Under the arrival, the model says how far to trust it: High, Fair or Low confidence, with the reasons, from the width of its window, a tight change, a held train ahead or no position for your train in the feed.</p>
+      </div>
+      <figure class="row-art glow-art">
+        <div class="glow-trio">
+          <figure><img src="assets/glow-blue.webp" width="603" height="545" alt="The home screen glowing blue: 8:01 to board the F." loading="lazy" decoding="async"><figcaption>8 minutes</figcaption></figure>
+          <figure><img src="assets/glow-yellow.webp" width="603" height="545" alt="The home screen glowing yellow: 0:30 to board." loading="lazy" decoding="async"><figcaption>30 seconds</figcaption></figure>
+          <figure><img src="assets/glow-red.webp" width="603" height="545" alt="The home screen glowing red: 0:16 to board." loading="lazy" decoding="async"><figcaption>16 seconds</figcaption></figure>
+        </div>
+        <picture class="confidence-card">
+          <source srcset="assets/confidence-1x.webp 1x, assets/confidence.webp 2x" type="image/webp">
+          <img src="assets/confidence-1x.webp" width="583" height="176" alt="Arrive 12:19, likely 12:15 to 12:22, low confidence: a tight change, 0:15 margin, a 6.5 minute window." loading="lazy" decoding="async">
+        </picture>
+        <figcaption>Captured live on 10 October: the 11:43 F at 30 and 16 seconds out, the next F 8 minutes out, and the confidence under its arrival.</figcaption>
+      </figure>
+    </article>
+
+    <article class="row" id="onboard">
+      <div class="row-copy">
+        <p class="eyebrow">03 / The doors close</p>
         <h3>It knows you’re on the train.</h3>
         <p>With motion sensing on, the phone feels the train pull away and weighs that moment against every train that just left your platform, with the feed’s own positions. The stops it feels along the way, and where you step off, settle it. It says “On the F”, or “On the G, not the F” when you took the other line.</p>
         <figure class="trace" aria-label="Diagram: the phone’s motion while walking, standing on the platform, and as the train pulls away, with the pull-away lined up against the departures from the platform.">
@@ -154,23 +175,23 @@
         </figure>
         <ul class="ticks">
           <li>Unsure, or the phone was deep in a bag? It assumes the train you planned, and says “presumably”.</li>
-          <li>One tap on the trains that just left puts it right, and your word stands for the ride.</li>
+          <li>One tap on the trains that just left puts it right, or “Not on a train”, and your word stands for the ride.</li>
         </ul>
       </div>
       <figure class="row-art">
         <picture class="phone">
-          <source srcset="assets/which-train-1x.webp 1x, assets/which-train.webp 2x" type="image/webp">
-          <img src="assets/which-train-1x.webp" width="402" height="874" alt="The “Your train” sheet: the trains that left 4 Av-9 St in the last minutes, an F and an R at 10:07, a G at 10:03 and an F at 9:55, each with where it is now and the route it leads to." loading="lazy" decoding="async">
+          <source srcset="assets/your-train-1x.webp 1x, assets/your-train.webp 2x" type="image/webp">
+          <img src="assets/your-train-1x.webp" width="402" height="874" alt="The “Your train” sheet: an F that left 4 Av-9 St about 11:44, now at Smith-9 Sts, and a G that left about 11:41, each with the route it leads to; the line to take at the change; and Not on a train." loading="lazy" decoding="async">
         </picture>
         <figcaption>The trains that just left 4 Av-9 St, live from the feed, each with the route it leads to.</figcaption>
       </figure>
     </article>
 
-    <article class="row" id="ride">
+    <article class="row flip" id="ride">
       <div class="row-copy">
-        <p class="eyebrow">03 / On the way</p>
+        <p class="eyebrow">04 / On the way</p>
         <h3>The fastest way, from the train you’re on.</h3>
-        <p>Once you’re aboard, the route follows that train, not the plan: the countdown to getting off, the change it makes with its margin and walk, and the arrival as that train will make it, with its window.</p>
+        <p>Once you’re aboard, the home screen counts down to your stop on that train, not the plan’s: when to get off, the change it makes with its margin, and the arrival as that train will make it, with its window. One swipe over, the line view draws the whole ride as a thread.</p>
         <ul class="ticks">
           <li>Took the F when the plan said the R? The route becomes the F’s: change at W 4 St, not Jay St.</li>
           <li>Stayed on past the change? It re-plans to a later change, or straight there, whichever gets you in first.</li>
@@ -179,14 +200,14 @@
       </div>
       <figure class="row-art stack">
         <picture class="phone">
-          <source srcset="assets/on-the-train-1x.webp 1x, assets/on-the-train.webp 2x" type="image/webp">
-          <img src="assets/on-the-train-1x.webp" width="402" height="874" alt="On the F, off at 10:28, with a countdown to getting off: change at W 4 St-Wash Sq to an A at 10:34 with a 3:15 margin and a 3:00 walk, arrive 14 St 10:36, 10 stops to go." loading="lazy" decoding="async">
+          <source srcset="assets/home-ride-1x.webp 1x, assets/home-ride.webp 2x" type="image/webp">
+          <img src="assets/home-ride-1x.webp" width="402" height="874" alt="On the train: 4:13 to getting off, on the F, off at Jay St-MetroTech 11:51, change to the A, 4 stops to go, arrive 14 St 12:07, likely 12:04 to 12:09, fair confidence." loading="lazy" decoding="async">
         </picture>
         <picture class="live-card">
           <source srcset="assets/live-activity-1x.webp 1x, assets/live-activity.webp 2x" type="image/webp">
-          <img src="assets/live-activity-1x.webp" width="557" height="193" alt="The lock-screen Live Activity: on the F, off 10:28, change at W 4 St to the A/C/E at 10:34, arrive 14 St 10:36." loading="lazy" decoding="async">
+          <img src="assets/live-activity-1x.webp" width="557" height="193" alt="The lock-screen Live Activity: on the F, off 11:51, change at Jay St-MetroTech to the A/C at 11:53, arrive 14 St 12:07, 9 minutes late." loading="lazy" decoding="async">
         </picture>
-        <figcaption>Captured live: boarding the 10:07 F turned the planned R via Jay St into the F via W 4 St.</figcaption>
+        <figcaption>Captured live on the 11:44 F: off at Jay St at 11:51 for the A, in at 14 St at 12:07.</figcaption>
       </figure>
     </article>
 
@@ -229,10 +250,10 @@
       <h2 id="also-title">The rest of the subway, at a glance.</h2>
     </div>
     <div class="also-strip">
-      <figure><picture class="phone"><source srcset="assets/routes-light-1x.webp 1x, assets/routes-light.webp 2x" type="image/webp"><img src="assets/routes-light-1x.webp" width="402" height="874" alt="Every way there, ranked by the next live arrival." loading="lazy" decoding="async"></picture><figcaption>Every way there, ranked</figcaption></figure>
-      <figure><picture class="phone"><source srcset="assets/line-dark-1x.webp 1x, assets/line-dark.webp 2x" type="image/webp"><img src="assets/line-dark-1x.webp" width="402" height="874" alt="Your line as a track with every train on it, live." loading="lazy" decoding="async"></picture><figcaption>Your line, live</figcaption></figure>
-      <figure><picture class="phone"><source srcset="assets/map-dark-1x.webp 1x, assets/map-dark.webp 2x" type="image/webp"><img src="assets/map-dark-1x.webp" width="402" height="874" alt="The route on the map with the trains at their positions." loading="lazy" decoding="async"></picture><figcaption>The map</figcaption></figure>
-      <figure><picture class="phone"><source srcset="assets/board-light-1x.webp 1x, assets/board-light.webp 2x" type="image/webp"><img src="assets/board-light-1x.webp" width="402" height="874" alt="A departure board for your platform." loading="lazy" decoding="async"></picture><figcaption>Your platform’s board</figcaption></figure>
+      <figure><picture class="phone"><source srcset="assets/line-view-1x.webp 1x, assets/line-view.webp 2x" type="image/webp"><img src="assets/line-view-1x.webp" width="402" height="874" alt="The line view: the ride as a thread from 4 Av-9 St on the F to the change at Jay St and the A to 14 St, with the other ways as faded threads." loading="lazy" decoding="async"></picture><figcaption>The line view</figcaption></figure>
+      <figure><picture class="phone"><source srcset="assets/routes-1x.webp 1x, assets/routes.webp 2x" type="image/webp"><img src="assets/routes-1x.webp" width="402" height="874" alt="Every way there, ranked, each with its delay and the reason it runs late." loading="lazy" decoding="async"></picture><figcaption>Every way there, ranked</figcaption></figure>
+      <figure><picture class="phone"><source srcset="assets/detail-map-1x.webp 1x, assets/detail-map.webp 2x" type="image/webp"><img src="assets/detail-map-1x.webp" width="402" height="874" alt="Route detail: the departure board for your platform and the route on the map with the trains on it." loading="lazy" decoding="async"></picture><figcaption>Board, map, track, hours</figcaption></figure>
+      <figure><picture class="phone"><source srcset="assets/line-tab-1x.webp 1x, assets/line-tab.webp 2x" type="image/webp"><img src="assets/line-tab-1x.webp" width="402" height="874" alt="The Line tab: what affects your route today, your train on the track and the route end to end." loading="lazy" decoding="async"></picture><figcaption>Your lines, live</figcaption></figure>
     </div>
   </section>
 
